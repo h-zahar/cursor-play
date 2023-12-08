@@ -5,7 +5,10 @@ const { v4: uuidv4 } = require("uuid");
 
 const port = 5000;
 
-const server = http.createServer();
+const server = http.createServer((req, res) => {
+  res.write("Server Running Happily!");
+  res.end();
+});
 
 const wsServer = new WebSocketServer({ server });
 
