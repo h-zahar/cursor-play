@@ -10,7 +10,7 @@ const Home = ({ username }) => {
     queryParams: { username },
   });
 
-  const THROTTLE = 200;
+  const THROTTLE = 50;
   const sendJsonMessageThrottled = useRef(throttle(sendJsonMessage, THROTTLE));
 
   const renderCursors = (users) => {
