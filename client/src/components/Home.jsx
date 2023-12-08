@@ -21,6 +21,16 @@ const Home = ({ username }) => {
     });
   };
 
+  const renderUsersList = (users) => {
+    return (
+      <ul>
+        {Object.keys(users).map((uuid) => {
+          return <li key={uuid}>{JSON.stringify(users[uuid])}</li>;
+        })}
+      </ul>
+    );
+  };
+
   useEffect(() => {
     sendJsonMessage({
       x: 0,
@@ -36,7 +46,12 @@ const Home = ({ username }) => {
   }, []);
 
   if (lastJsonMessage) {
-    return <>{renderCursors(lastJsonMessage)}</>;
+    return (
+      <>
+        {renderCursors(lastJsonMessage)}
+        {renderUsersList(lastJsonMessage)}
+      </>
+    );
   }
 
   return <div>{username}</div>;
