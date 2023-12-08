@@ -4,13 +4,13 @@ import throttle from "lodash.throttle";
 import { Cursor } from "../Cursor";
 
 const Home = ({ username }) => {
-  const WS_URL = "ws://localhost:5000";
+  const WS_URL = "wss://cursorplay-oh27lohg.b4a.run";
 
   const { sendJsonMessage, lastJsonMessage } = useWebSocket(WS_URL, {
     queryParams: { username },
   });
 
-  const THROTTLE = 50;
+  const THROTTLE = 200;
   const sendJsonMessageThrottled = useRef(throttle(sendJsonMessage, THROTTLE));
 
   const renderCursors = (users) => {
